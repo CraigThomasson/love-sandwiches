@@ -1,6 +1,5 @@
 import gspread
-from google.oauth2.service_account import Credentials
-from pprint import pprint 
+from google.oauth2.service_account import Credentials 
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -16,14 +15,17 @@ SHEET = GSPREAD_CLIENT.open('love_sandwiches')
 
 def get_sales_data():
     """
-    get sales figures input from the user
+    get sales figures input from the user.
+    Run while lupe to collect valid string of data from the user
+    via the terminal, whch must be a string of 6 numbers separated
+    by commas, the loop will repeatedly request data, until it is valid.
     """
     while True:
         print("please enter sales data from the last market.")
         print("Data should be six number separated by commas.")
         print("Example: 10,20,30,40,50,60\n")
 
-        data_str = input("enter your data here: ")
+        data_str = input("enter your data here:\n")
         
         sales_data = data_str.split(",")
         if validate_data(sales_data):
